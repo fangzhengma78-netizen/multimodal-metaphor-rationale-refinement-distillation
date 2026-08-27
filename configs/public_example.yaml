@@ -1,0 +1,43 @@
+teacher_model: Qwen2.5-VL-72B-Instruct
+student_model: Qwen3-VL-4B-Instruct
+fields:
+  sample_id: sample_id
+  image_name: image_name
+  image_path: image_path
+  text: text
+  language: language
+  label: label
+  original_rationale: A0
+  refined_rationale: A1
+prompts:
+  zh: prompts/zh/prompts.md
+  en: prompts/en/prompts.md
+lexicons:
+  labels_zh: lexicons/labels/zh.txt
+  labels_en: lexicons/labels/en.txt
+  train_cues_zh: lexicons/cues/train/zh.txt
+  train_cues_en: lexicons/cues/train/en.txt
+  train_templates_zh: lexicons/templates/train/zh.txt
+  train_templates_en: lexicons/templates/train/en.txt
+generation:
+  temperature: 0.2
+  top_p: 1.0
+  max_new_tokens: 256
+  max_retries: 2
+student_training:
+  precision: bf16
+  optimizer: AdamW
+  learning_rate: 0.0002
+  per_device_batch_size: 1
+  gradient_accumulation_steps: 16
+  epochs: 1
+  max_sequence_length: 1024
+  seed: 42
+  lora:
+    r: 64
+    alpha: 128
+    dropout: 0.05
+random_seeds: [42, 43, 44]
+bootstrap_resamples: 1000
+output_dir: /path/to/output
+
