@@ -21,7 +21,6 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-数据和模型需由使用者依据各自许可证获取。标准输入字段见 `docs/data_schema.md`。
 
 ## 命令
 
